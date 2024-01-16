@@ -38,6 +38,7 @@ dependencies:
   flutter_lorem: ^2.0.0
   sqflite: ^2.3.0
   path: ^1.8.3  
+  sqflite_common_ffi: ^2.3.0+4
 
 dev_dependencies:
   flutter_test:

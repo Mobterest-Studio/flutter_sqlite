@@ -1,3 +1,5 @@
+String dbName = 'shopping.db';
+
 /// `shoppinglist` table name
 const tableShoppingList = 'shoppinglist';
 const listColumnId = 'id';

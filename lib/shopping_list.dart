@@ -30,12 +30,15 @@ class _ShoppingItemState extends State<SList> {
           style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
         ),
         actions: [
-          ActionChip(
-            label: const Text("Delete list"),
-            onPressed: () {
-              shoppingProvider!.deleteShoppingList(args.list.id!);
-              Navigator.pop(context); //DOES NOT REFRESH
-            },
+          Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: ActionChip(
+              label: const Text("Delete list"),
+              onPressed: () {
+                shoppingProvider!.deleteShoppingList(args.list.id!);
+                Navigator.pop(context); //DOES NOT REFRESH
+              },
+            ),
           )
         ],
         centerTitle: false,

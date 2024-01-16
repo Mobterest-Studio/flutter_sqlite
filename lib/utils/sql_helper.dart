@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 import 'constants.dart';
@@ -172,11 +175,13 @@ create table $tableShoppingItem (
     return lists;
   }
 
-  Future<void> deleteShoppingList(int id) async {
-    await db
+  Future<int> deleteShoppingList(int id) async {
+    final deletedId = await db
         .delete(tableShoppingList, where: '$listColumnId = ?', whereArgs: [id]);
     await db.delete(tableShoppingItem,
         where: '$itemColumnListId = ?', whereArgs: [id]);
+
+    return deletedId;
   }
 
   Future<int> updateShoppingList(ShoppingListHelper shoppinglist) async {
@@ -235,13 +240,32 @@ create table $tableShoppingItem (
         .delete(tableShoppingItem, where: '$itemColumnId = ?', whereArgs: [id]);
   }
 
-  Future<void> updateShoppingItem(ShoppingItemHelper shoppingItem) async {
-    print(shoppingItem.done);
-    await db.update(tableShoppingItem, shoppingItem.toMap(),
+  Future<int> updateShoppingItem(ShoppingItemHelper shoppingItem) async {
+    return await db.update(tableShoppingItem, shoppingItem.toMap(),
         where: '$itemColumnId = ?', whereArgs: [shoppingItem.id]);
   }
 
   Future close() async => db.close();
+
+  Future<String> initDeleteDb(String dbName) async {
+    final databasePath = await getDatabasesPath();
+    // print(databasePath);
+    final path = join(databasePath, dbName);
+
+    // make sure the folder exists
+    // ignore: avoid_slow_async_io
+    if (await Directory(dirname(path)).exists()) {
+      await deleteDatabase(path);
+    } else {
+      try {
+        await Directory(dirname(path)).create(recursive: true);
+      } catch (e) {
+        // ignore: avoid_print
+        print(e);
+      }
+    }
+    return path;
+  }
 
   Future<void> deleteDatabase(String path) =>
       databaseFactory.deleteDatabase(path);

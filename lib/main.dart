@@ -4,6 +4,7 @@ import 'package:sqflite/sqflite.dart';
 
 import 'shopping_list.dart';
 import 'home.dart';
+import 'utils/constants.dart';
 import 'utils/sql_helper.dart';
 
 ShoppingProvider? shoppingProvider;
@@ -14,7 +15,7 @@ void main() async {
 
   // Get a location using getDatabasesPath
   String databasePath = await getDatabasesPath();
-  String path = join(databasePath, 'shopping.db');
+  String path = join(databasePath, dbName);
 
   //deleteDatabase(path);
 
