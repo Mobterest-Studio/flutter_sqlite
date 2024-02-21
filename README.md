@@ -1,16 +1,7 @@
-# shopping_sqlite_app
+# The Ultimate Beginner's Guide to SQLite in Flutter!
 
-A new Flutter project.
+SQFlite v2.3.0
 
-## Getting Started
+## Youtube Tutorial
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+If you learn best through visual aids, explore [this tutorial](https://www.youtube.com/watch?v=gDbmT2zd-ik&t=178s) for better understanding on SQLite in Flutter (SQFlite)
